@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Drum Dominator</title>
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="script.js" defer></script>
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js"></script>
+  <script src="https://unpkg.com/networked-aframe/dist/networked-aframe.min.js"></script>
+
+  <style>
+    #bpmUI {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: white;
+      font-family: sans-serif;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="bpmUI">
+    <label for="bpmSlider">BPM: <span id="bpmDisplay">100</span></label>
+    <input type="range" min="60" max="180" value="100" id="bpmSlider">
+  </div>
+
+  <a-scene background="color: black" networked-scene="room: drum-room; adapter: socketio; audio: true;">
+
+    <!-- Sound assets -->
+    <a-assets>
+<audio id="kick" src="sounds/kick.wav"></audio>
+<audio id="snare" src="sounds/snare.wav"></audio>
+<audio id="hihat" src="sounds/hihat.wav"></audio>
+<audio id="crash" src="sounds/crash.wav"></audio>
+
+    </a-assets>
+
+    <!-- Drum Cubes -->
+    <a-box position="0 1 -3" color="#733B73" 
+           drum-step="soundId: kick; beatPattern: 0,3,5; beatModulo: 8" 
+           change-brightness-on-hover
+           networked="template: #drum-template; attachTemplateToLocal: false"></a-box>
+
+    <a-box position="5 1 -3" color="#733B73"
+           drum-step="soundId: snare; beatPattern: 2,6; beatModulo: 8" 
+           change-brightness-on-hover
+           networked="template: #drum-template; attachTemplateToLocal: false"></a-box>
+
+    <a-box position="-5 1 -3" color="#733B73"
+           drum-step="soundId: crash; beatPattern: 1,3,5,7; beatModulo: 8" 
+           change-brightness-on-hover
+           networked="template: #drum-template; attachTemplateToLocal: false"></a-box>
+    
+
+    <a-box position="0 4 -5" color="#733B73"
+           drum-step="soundId: hihat; beatPattern: 0,1,2,3,4,5,6,7; beatModulo: 8" 
+           change-brightness-on-hover
+           networked="template: #drum-template; attachTemplateToLocal: false"></a-box>
+
+    <!-- Camera -->
+    <a-camera position="0 1.6 0">
+      <a-cursor color="#CCCCCC"></a-cursor>
+      <a-entity networked-audio-source></a-entity>
+    </a-camera>
+
+  </a-scene>:contentReference[oaicite:34]{index=34}
+</body>
+</html>

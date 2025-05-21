@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "aframe-motion-capture-components": "^0.2.7",
+    "aframe-physics-system": "^4.0.2",
+    "resonance-audio": "^1.0.0",
+    "tone": "^15.2.1"
+  }
+}
