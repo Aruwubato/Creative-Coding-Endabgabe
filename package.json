@@ -1,8 +1,16 @@
 {
+  "name": "testing",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
-    "aframe-motion-capture-components": "^0.2.7",
-    "aframe-physics-system": "^4.0.2",
-    "resonance-audio": "^1.0.0",
-    "tone": "^15.2.1"
+    "ws": "^8.18.2"
   }
 }
